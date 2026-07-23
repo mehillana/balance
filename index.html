@@ -16,67 +16,67 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-zinc-800 selection:text-white">
 
-    <!-- Header -->
+    <!-- Capçalera -->
     <header class="border-b border-zinc-800/80 bg-zinc-950/50 backdrop-blur-md sticky top-0 z-10">
         <div class="max-w-xl mx-auto px-6 h-16 flex items-center justify-between">
             <span class="font-semibold tracking-tight text-sm text-zinc-200">Balance</span>
             <div class="text-xs font-medium text-zinc-400 bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-full">
-                Expenses
+                Despeses
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Contingut Principal -->
     <main class="max-w-xl w-full mx-auto px-6 py-10 flex-1 space-y-8">
         
-        <!-- Summary Box -->
+        <!-- Caixa de Resum -->
         <section class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-6 shadow-sm">
-            <h2 class="text-xs font-medium uppercase tracking-wider text-zinc-400">Total Balance</h2>
+            <h2 class="text-xs font-medium uppercase tracking-wider text-zinc-400">Balanç Total</h2>
             <div id="total-balance" class="text-3xl font-bold tracking-tight text-white mt-2">
-                0.00 €
+                0,00 €
             </div>
         </section>
 
-        <!-- Input Form -->
+        <!-- Formulari d'Entrada -->
         <section class="bg-zinc-900/60 border border-zinc-800/80 rounded-2xl p-6 shadow-sm">
-            <h2 class="text-xs font-medium uppercase tracking-wider text-zinc-400 mb-4">Add Transaction</h2>
+            <h2 class="text-xs font-medium uppercase tracking-wider text-zinc-400 mb-4">Afegir Transacció</h2>
             <form id="expense-form" class="space-y-4">
                 <div>
-                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">Description</label>
-                    <input type="text" id="desc" placeholder="Dinner, transport..." required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-zinc-600 transition">
+                    <label class="block text-xs text-zinc-400 mb-1.5 font-medium">Descripció</label>
+                    <input type="text" id="desc" placeholder="Sopar, transport..." required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-zinc-600 transition">
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs text-zinc-400 mb-1.5 font-medium">Amount</label>
-                        <input type="number" step="0.01" id="amount" placeholder="0.00" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-zinc-600 transition">
+                        <label class="block text-xs text-zinc-400 mb-1.5 font-medium">Import</label>
+                        <input type="number" step="0.01" id="amount" placeholder="0,00" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-zinc-600 transition">
                     </div>
                     <div>
-                        <label class="block text-xs text-zinc-400 mb-1.5 font-medium">Payer</label>
-                        <input type="text" id="payer" placeholder="Name" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-zinc-600 transition">
+                        <label class="block text-xs text-zinc-400 mb-1.5 font-medium">Pagador</label>
+                        <input type="text" id="payer" placeholder="Nom" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-zinc-600 transition">
                     </div>
                 </div>
                 <button type="submit" class="w-full bg-zinc-100 hover:bg-white text-zinc-900 font-medium py-2.5 rounded-xl text-sm transition mt-2">
-                    Add Expense
+                    Afegir despesa
                 </button>
             </form>
         </section>
 
-        <!-- Transactions List -->
+        <!-- Llista de Transaccions -->
         <section class="space-y-3">
-            <h2 class="text-xs font-medium uppercase tracking-wider text-zinc-400">Activity</h2>
+            <h2 class="text-xs font-medium uppercase tracking-wider text-zinc-400">Activitat</h2>
             <div id="transactions-list" class="space-y-2">
-                <!-- Transactions will be injected here -->
+                <!-- Les transaccions s'injectaran aquí -->
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
+    <!-- Peu de pàgina -->
     <footer class="border-t border-zinc-800/80 py-6 text-center text-xs text-zinc-500">
-        Local storage enabled
+        Emmagatzematge local activat
     </footer>
 
-    <!-- Script Logic -->
+    <!-- Lògica de JavaScript -->
     <script>
         let transactions = JSON.parse(localStorage.getItem('balance_transactions')) || [];
 
@@ -94,7 +94,7 @@
             if (transactions.length === 0) {
                 listContainer.innerHTML = `
                     <div class="bg-zinc-900/40 border border-zinc-800/50 rounded-xl p-4 text-center text-sm text-zinc-500">
-                        No transactions recorded yet.
+                        Encara no hi ha cap transacció registrada.
                     </div>
                 `;
             }
@@ -105,17 +105,17 @@
                     <div class="bg-zinc-900/60 border border-zinc-800/80 rounded-xl p-4 flex items-center justify-between">
                         <div>
                             <div class="text-sm font-medium text-zinc-200">${tx.desc}</div>
-                            <div class="text-xs text-zinc-500 mt-0.5">Paid by <span class="text-zinc-400">${tx.payer}</span></div>
+                            <div class="text-xs text-zinc-500 mt-0.5">Pagat per <span class="text-zinc-400">${tx.payer}</span></div>
                         </div>
                         <div class="flex items-center gap-4">
-                            <span class="text-sm font-semibold text-zinc-100">${tx.amount.toFixed(2)} €</span>
-                            <button onclick="removeTx(${index})" class="text-xs text-zinc-500 hover:text-red-400 transition">Remove</button>
+                            <span class="text-sm font-semibold text-zinc-100">${tx.amount.toFixed(2).replace('.', ',')} €</span>
+                            <button onclick="removeTx(${index})" class="text-xs text-zinc-500 hover:text-red-400 transition">Eliminar</button>
                         </div>
                     </div>
                 `;
             });
 
-            totalBalanceEl.textContent = `${total.toFixed(2)} €`;
+            totalBalanceEl.textContent = `${total.toFixed(2).replace('.', ',')} €`;
             localStorage.setItem('balance_transactions', JSON.stringify(transactions));
         }
 
